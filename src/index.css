@@ -1,2 +1,90 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@font-face {
+  font-family: 'Morabba';
+  src: url('/fonts/Morabba/woff2/Morabba-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Morabba';
+  src: url('/fonts/Morabba/woff2/Morabba-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Morabba';
+  src: url('/fonts/Morabba/woff2/Morabba-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/Dana/woff2/DanaFaNum-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/Dana/woff2/DanaFaNum-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/Dana/woff2/DanaFaNum-DemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@layer components {
+  .font-morabba {
+    font-family: 'Morabba', sans-serif;
+  }
+
+  .font-morabba-light {
+    font-family: 'Morabba', sans-serif;
+    font-weight: 300;
+  }
+
+  .font-morabba-medium {
+    font-family: 'Morabba', sans-serif;
+    font-weight: 500;
+  }
+
+  .font-morabba-bold {
+    font-family: 'Morabba', sans-serif;
+    font-weight: 700;
+  }
+
+  .font-dana {
+    font-family: 'Dana', sans-serif;
+  }
+
+  .font-dana-regular {
+    font-family: 'Dana', sans-serif;
+    font-weight: 400;
+  }
+
+  .font-dana-medium {
+    font-family: 'Dana', sans-serif;
+    font-weight: 500;
+  }
+
+  .font-dana-bold {
+    font-family: 'Dana', sans-serif;
+    font-weight: 600;
+  }
+}
+
+body {
+  font-family: 'Dana', sans-serif;
+
+}
