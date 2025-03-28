@@ -25,13 +25,13 @@ export default function Header() {
                         <FaBars/>
                     </button>
 
-                    <div>
+                    <Link to="/">
                         <img
                             src="/images/Logo.svg"
                             alt="Logo"
                             className="h-[52px] w-[160px] sm:w-[160px] lg:w-[180px] xl:w-[244px]"
                         />
-                    </div>
+                    </Link>
                     <nav className="hidden md:block">
                         <NavLinks/>
                     </nav>

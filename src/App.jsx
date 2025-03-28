@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from "./components/header/header";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./layout/Layout";
 import Home from "./pages/home/home";
 import Shop from "./pages/shop/shop";
 import Blog from "./pages/blog/blog";
@@ -8,21 +8,47 @@ import Contact from "./pages/contact/contact";
 import Account from "./pages/account/account";
 import Cart from "./pages/cart/cart";
 
-export default function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/shop",
+        element: <Shop />
+      },
+      {
+        path: "/blog",
+        element: <Blog />
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      },
+      {
+        path: "/account",
+        element: <Account />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
+    ]
+  }
+]);
+
+function App() {
   return (
-    <Router>
-      <div>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </div>
-    </Router>
+    <RouterProvider router={router} />
   );
 }
+
+export default App;
