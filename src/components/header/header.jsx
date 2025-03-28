@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart';
 import {FaUser} from '@react-icons/all-files/fa/FaUser';
 import {FaBars} from '@react-icons/all-files/fa/FaBars';
+import { Link } from 'react-router-dom';
 
 import NavLinks from './NavLinks';
 import SearchInput from './SearchInput.jsx';
@@ -24,13 +25,13 @@ export default function Header() {
                         <FaBars/>
                     </button>
 
-                    <div>
+                    <Link to="/">
                         <img
                             src="/images/Logo.svg"
                             alt="Logo"
                             className="h-[52px] w-[160px] sm:w-[160px] lg:w-[180px] xl:w-[244px]"
                         />
-                    </div>
+                    </Link>
                     <nav className="hidden md:block">
                         <NavLinks/>
                     </nav>
@@ -39,8 +40,12 @@ export default function Header() {
                 <section className="flex items-center gap-x-3">
                     <SearchInput/>
                     <div className="flex items-center lg:gap-x-4 gap-x-1">
-                        <IconButton icon={<FaShoppingCart/>}/>
-                        <IconButton icon={<FaUser/>}/>
+                        <Link to="/cart">
+                            <IconButton icon={<FaShoppingCart/>}/>
+                        </Link>
+                        <Link to="/account">
+                            <IconButton icon={<FaUser/>}/>
+                        </Link>
                     </div>
                 </section>
             </section>

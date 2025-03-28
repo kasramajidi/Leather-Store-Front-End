@@ -1,22 +1,16 @@
-import React, { useRef } from 'react'
-import Footer from '../components/Footer/Footer'
-import { Outlet } from 'react-router'
+import React from 'react';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
+import { Outlet } from 'react-router-dom';
 
-const Layout = () => {
-    
-  const topRef = useRef(null);
-
-  const scrollToTop = () => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <div>
-        {/* <Header topRef={topRef} />  ref={topRef} */} 
-        <Outlet />
-        <Footer scrollToTop={scrollToTop} />
-    </div>
-  )
+export default function Layout() {
+    return (
+        <div className="min-h-screen flex flex-col bg-[#fcfaf8]">
+            <Header />
+            <main className="flex-1 bg-[#fcfaf8]">
+                <Outlet />
+            </main>
+            <Footer />
+        </div>
+    );
 }
-
-export default Layout
