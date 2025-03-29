@@ -40,6 +40,28 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />
+      },
+      {
+        path: "/product-category",
+        element: <Home />,
+        children: [
+          {
+            path: "leather-shoes",
+            Component: <Home />,
+          },
+          {
+            path: "leather-gloves",
+            Component: <Home />,
+          },
+          {
+            path: "leather-bag",
+            Component: <Home />,
+          },
+          {
+            path: "leather-accessory",
+            Component: <Home />,
+          }
+        ]
       }
     ]
   }
