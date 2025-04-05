@@ -16,7 +16,7 @@ export default function Header() {
 
     return (
         <header className="bg-[#fcfaf8] relative">
-            <section className="container mx-auto max-w-screen-xl py-4 flex items-center justify-between px-4 lg:px-0">
+            <section className="container mx-auto max-w-screen-xl py-4 flex items-center justify-between px-4 ">
                 <section className="flex items-center gap-x-3">
                     <button
                         className="py-3 px-3 cursor-pointer text-[#795444] bg-[#ece2d6] rounded-full hover:bg-[#a16a51] transition-all md:hidden"
@@ -49,7 +49,7 @@ export default function Header() {
                     </div>
                 </section>
             </section>
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
+            <MobileMenu isOpen={isMenuOpen} onClose={toggleMenu}/>
         </header>
     );
 }
