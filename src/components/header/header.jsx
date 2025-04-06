@@ -49,7 +49,7 @@ export default function Header({topRef}) {
                     </div>
                 </section>
             </section>
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
+            <MobileMenu isOpen={isMenuOpen} onClose={toggleMenu}/>
         </header>
     );
 }

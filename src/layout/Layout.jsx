@@ -11,9 +11,9 @@ export default function Layout() {
       };
 
     return (
-        <div className="min-h-screen flex flex-col bg-[#fcfaf8]">
-            <Header topRef={topRef} />
-            <main className="flex-1 bg-[#fcfaf8]">
+        <div className="min-h-screen flex flex-col bg-white">
+            <Header />
+            <main className="flex-1 bg-white">
                 <Outlet />
             </main>
             <Footer scrollToTop={scrollToTop} />
