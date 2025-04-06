@@ -1,7 +1,8 @@
-// import { NavLink } from "react-router";
+import { NavLink } from "react-router";
 import { FaArrowUp, FaWhatsapp, FaInstagram, FaWindowMinimize } from "react-icons/fa";
 import { RiTelegram2Line } from "react-icons/ri";
 import { PiShoppingBagBold } from "react-icons/pi";
+
 import MembershipForm from "../shared/MembershipForm";
 
 const accessList = [
@@ -13,19 +14,19 @@ const accessList = [
 
 const categoriesList = [
   {
-    path: "/",
+    path: "/product-category/leather-shoes",
     text: "کفش چرم",
   },
   {
-    path: "/",
+    path: "/product-category/leather-gloves",
     text: "دستکش چرم",
   },
   {
-    path: "/",
+    path: "/product-category/leather-bag",
     text: "کیف چرم",
   },
   {
-    path: "/",
+    path: "/product-category/leather-accessory",
     text: "اکسسوری چرم",
   },
 ];
@@ -59,7 +60,7 @@ const contactList = [
 
 const Footer = ({ scrollToTop }) => {
   return (
-    <footer className="bg-[#653a2a] text-[#f7fbf3] mt-10 text-[15px] max-md:text-xs">
+    <footer className="bg-[#653a2a] text-[#f7fbf3] text-[15px] max-md:text-xs">
       <div className="flex justify-end mb-[-20px]">
         <div
           onClick={scrollToTop}
@@ -105,17 +106,17 @@ const Footer = ({ scrollToTop }) => {
             {categoriesList.map((item, index) => (
               <li key={index} className="pt-4 flex items-start gap-1">
                 <FaWindowMinimize className="text-[#9e6a54]" />
-                <span>
-                  {/* <NavLink to={item.path}> */}
+                <span className="cursor-pointer">
+                  <NavLink to={item.path}>
                   {item.text}
-                  {/* </NavLink> */}
+                  </NavLink>
                 </span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="col-span-3 flex justify-between max-md:flex-col max-lg:mt-10">
-          <div>
+        <div className="col-span-3 flex gap-10 max-md:gap-0 max-md:flex-col max-lg:mt-10">
+          <div className="grow-1">
             <h2 className="text-xl font-extrabold">اطلاعات تماس</h2>
             <ul>
               {contactList.map((item, index) => (
@@ -141,7 +142,7 @@ const Footer = ({ scrollToTop }) => {
               </li>
             </ul>
           </div>
-          <div className="max-md:mt-10">
+          <div className="max-md:mt-10 grow-0">
             <h2 className="text-xl font-extrabold">مجوز های کسب شده</h2>
             <div className="flex gap-5 pt-4">
               {licenseList.map((item, index) => (

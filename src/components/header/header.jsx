@@ -9,14 +9,14 @@ import SearchInput from './SearchInput.jsx';
 import IconButton from './IconButton.jsx';
 import MobileMenu from './MobileMenu.jsx';
 
-export default function Header() {
+export default function Header({topRef}) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
-        <header className="bg-[#fcfaf8] relative">
-            <section className="container mx-auto max-w-screen-xl py-4 flex items-center justify-between px-4 ">
+        <header className="bg-[#fcfaf8] relative" ref={topRef}>
+            <section className="container mx-auto max-w-screen-xl py-4 flex items-center justify-between px-4 lg:px-0">
                 <section className="flex items-center gap-x-3">
                     <button
                         className="py-3 px-3 cursor-pointer text-[#795444] bg-[#ece2d6] rounded-full hover:bg-[#a16a51] transition-all md:hidden"
