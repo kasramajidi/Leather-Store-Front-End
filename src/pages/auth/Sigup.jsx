@@ -7,9 +7,9 @@ import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { registerUser } from "./api";
 
 const schema = yup.object({
-  username: yup.string().required(),
+  username: yup.string().required().min(3).max(15),
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  password: yup.string().required().min(8).max(15),
 });
 
 const Sigup = () => {
@@ -18,7 +18,7 @@ const Sigup = () => {
   const [error, setError] = useState("");
   const [value, setValue] = useState("");
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(schema),
     mode: "onBlur"
   });
@@ -26,6 +26,29 @@ const Sigup = () => {
   const submitForm = (user) => {
     registerUser({ user, navigate, setError });
   };
+  
+  const renderError = (message) => {
+    switch (message) {
+      case "username is a required field":
+        return "نام کاربری یک فیلد اجباری است.";
+      case "username must be at least 3 characters":
+        return "نام کاربری باید حداقل شامل 3 کاراکتر باشد.";
+      case "username must be at most 15 characters":
+        return "نام کاربری بای حداقل شامل 15 کاراکتر باشد."
+      case "email is a required field":
+        return "ایمیل یک فیلد اجباری است.";
+      case "email must be a valid email":
+        return "ایمیل باید معتبر باشد.";
+      case "password is a required field":
+        return "پسورد یک فیلد اجباری است.";
+      case "password must be at least 8 characters":
+        return "پسورد باید حداقل شامل 8 کاراکتر باشد.";
+      case "password must be at most 15 characters":
+        return "پسورد باید حداکثر شامل 15 کاراکتر باشد.";
+      default:
+        return message;
+    }
+  }
 
   const renderContent= () => {
     if(value.length < 4) {
@@ -48,7 +71,7 @@ const Sigup = () => {
   }
 
   return (
-    <div className="bg-white text-black py-25">
+    <div className="text-black py-25 w-[50vw] max-md:w-[100vw]">
       <h1 className="text-xl px-5 font-extrabold">عضویت</h1>
       <form
         onSubmit={handleSubmit(submitForm)}
@@ -62,8 +85,8 @@ const Sigup = () => {
             type="text"
             {...register("username")}
             className="w-full h-12 bg-[#ece2d6] rounded-xl mt-1 outline-none pr-2"
-            required
           />
+          {errors.username && <div className="pt-1 text-error">{renderError(errors.username.message)}</div>}
         </div>
         <div className="pb-7">
           <label>
@@ -73,8 +96,8 @@ const Sigup = () => {
             type="email"
             {...register("email")}
             className="w-full h-12 bg-[#ece2d6] rounded-xl mt-1 outline-none pr-2"
-            required
           />
+          {errors.email && <div className="pt-1 text-error">{renderError(errors.email.message)}</div>}
         </div>
         <div className="pb-7">
           <label>
@@ -87,7 +110,6 @@ const Sigup = () => {
               className="w-full h-12 bg-[#ece2d6] rounded-xl mt-1 outline-none pr-2 z-0 inline"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              required
             />
             {isShow ? (
               <LuEye
@@ -112,10 +134,10 @@ const Sigup = () => {
                 حروف کوچک و بزرگ انگلیسی، اعداد و نمادهایی مانند ! " ؟ $ % ^ & )
                 استفاده کنید.
               </p>
-              }
-              
+              } 
             </div>
           )}
+          {errors.password && <div className="pt-1 text-error">{renderError(errors.password.message)}</div>}
         </div>
         <p className="text-gray-500 text-[15px] pb-7">
           اطلاعات شخصی شما برای پردازش سفارش شما استفاده می‌شود، و پشتیبانی از
